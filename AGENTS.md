@@ -15,6 +15,8 @@ O tema ainda deve ser tratado como provisório até a definição do problema, d
 
 Há materiais iniciais sobre o tema em `nota_tema_hipoglicemia_dm1.md` e `nota_tema_hipoglicemia_dm1_resumo.md`.
 
+O template oficial LaTeX e a configuração inicial da proposta para o processo seletivo 2027 estão em `proposta-2027/`; consulte `proposta-2027/README.md` para a origem, os requisitos do edital e as instruções de compilação.
+
 ## Considerações para o trabalho
 
 - Manter o foco em uma contribuição de Computação Aplicada adequada a um mestrado profissional, com problema prático, artefato e avaliação definidos.
