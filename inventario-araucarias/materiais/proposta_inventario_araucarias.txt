@@ -1,4 +1,4 @@
-Inventário georreferenciado de araucárias por meio da identificação de copas e estruturas reprodutivas em imagens
+Adaptação e avaliação de modelos de aprendizado profundo para segmentação de copas e classificação reprodutiva de araucárias em inventário georreferenciado
 
 A proposta é produzir um mapa de araucárias individuais em uma área piloto de Floresta Ombrófila Mista. Cada ponto corresponderá a uma árvore e terá latitude, longitude, identificação da espécie, classificação reprodutiva (masculina, feminina ou indeterminada), imagem que sustenta a classificação, data da observação e estimativa de erro da posição. O resultado será entregue em formatos geográficos abertos, como GeoJSON e KML, para uso em ferramentas de mapas, sem depender da criação de um sistema próprio.
 

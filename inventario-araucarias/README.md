@@ -1,4 +1,4 @@
-# Inventário georreferenciado de araucárias por meio da identificação de copas e estruturas reprodutivas em imagens
+# Adaptação e avaliação de modelos de aprendizado profundo para segmentação de copas e classificação reprodutiva de araucárias em inventário georreferenciado
 
 Projeto de mestrado profissional em Computação Aplicada sobre a produção e a avaliação de um inventário georreferenciado de indivíduos de *Araucaria angustifolia*, a partir da identificação de copas e estruturas reprodutivas em imagens.
 
