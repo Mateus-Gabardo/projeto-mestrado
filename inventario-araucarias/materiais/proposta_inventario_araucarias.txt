@@ -1,0 +1,90 @@
+Inventário georreferenciado de araucárias por meio da identificação de copas e estruturas reprodutivas em imagens
+
+A proposta é produzir um mapa de araucárias individuais em uma área piloto de Floresta Ombrófila Mista. Cada ponto corresponderá a uma árvore e terá latitude, longitude, identificação da espécie, classificação reprodutiva (masculina, feminina ou indeterminada), imagem que sustenta a classificação, data da observação e estimativa de erro da posição. O resultado será entregue em formatos geográficos abertos, como GeoJSON e KML, para uso em ferramentas de mapas, sem depender da criação de um sistema próprio.
+
+Pergunta de pesquisa:
+
+Como integrar a identificação de copas e de estruturas reprodutivas em imagens de UAV para reduzir erros de detecção, classificação e localização no mapeamento individual de Araucaria angustifolia?
+
+A pergunta reúne três problemas técnicos: detectar a araucária pela copa; classificar sua condição reprodutiva; e associar corretamente cada árvore a uma coordenada geográfica.
+
+O método terá duas etapas. Na primeira, imagens aéreas ou de drone serão usadas para separar copas individuais e identificar quais pertencem a Araucaria angustifolia. Será testada uma estratégia que combina aparência da copa, sua forma e, quando disponível, altura estimada e imagens de outros ângulos. Seu desempenho será comparado com detectores usados nos estudos anteriores, como YOLO, sobretudo em trechos de mata densa. Na segunda etapa, imagens mais próximas das copas identificadas, preferencialmente obtidas por um drone pequeno, alimentarão um modelo ajustado para reconhecer estróbilos masculinos (popularmente chamados de pitos) ou pinhas femininas. Uma estrutura reconhecida e atribuída com segurança à árvore fornece evidência positiva para classificá-la; sem estrutura visível, o registro continuará indeterminado. Casos contraditórios exigirão revisão humana.
+
+As coordenadas serão obtidas do levantamento georreferenciado e conferidas em uma amostra com medição de campo. Será necessário associar cada imagem próxima à copa correta e medir tanto os erros de identificação quanto o erro em metros entre o ponto gerado e a posição de referência. A avaliação também verificará quantas araucárias visíveis foram encontradas, quantas receberam classificação reprodutiva correta e o tempo necessário por área. Árvores encobertas por outras copas ficarão fora do alcance de imagens ópticas aéreas e serão registradas como limite do levantamento.
+
+O mapa poderá apoiar o acompanhamento da espécie, a análise da distribuição espacial de indivíduos masculinos e femininos, o planejamento de conservação e replante e a localização de árvores com potencial de produzir pinhão. A presença de uma árvore feminina não significa que haja pinhas disponíveis naquela safra; essa observação deve ter data própria. Já existem mapas de araucárias e estudos que observam estróbilos por drone. A contribuição a investigar é combinar, em mata fechada, a identificação individual pela copa, a classificação reprodutiva por imagens e a produção de pontos georreferenciados cuja precisão seja medida.
+
+Trabalhos próximos e técnicas empregadas:
+
+1. Karasinski et al. (2025), YOLOv7x com imagens do Google Earth: 1.097 recortes foram anotados com caixas delimitadoras, contendo 4.660 araucárias. O detector foi inicializado com pesos pré-treinados no COCO, treinado com entrada 640 x 640 e aumento de dados por rotação, ajustes de matiz/saturação e mosaico. Usaram validação cruzada em cinco partes. As detecções georreferenciadas foram agregadas em mapas de pontos, densidade e incerteza para Curitiba. Relata mAP de 90,79% e F1 de 88,68%; os 97.232 indivíduos são previsões do modelo, não uma lista de coordenadas confirmadas em campo. Os dados não estão públicos para download.
+
+2. Correa (2024), YOLOv7 com imagens de UAV: um DJI Mavic 3 gerou um ortomosaico de fragmento florestal urbano, dividido em 14 partes para treinamento, validação e teste. O modelo detectou e contou araucárias; também foram comparados modelos de regressão para estimar o DAP pela área da copa. Foram reportados precisão de 79,3%, revocação de 86,8%, AP de 87% e F1 médio de 77,16%.
+
+3. Mendes et al. (2026), YOLOv11x com imagens de UAV: detector treinado em dois conjuntos de áreas abertas em Santa Catarina, um heterogêneo e outro mais uniforme, com validação cruzada no conjunto mais uniforme. A AP variou de 21% a 27% e o F1 de 54% a 61%; os autores destacam a influência da uniformidade dos dados e das anotações.
+
+4. Saad et al. (2021), Random Forest e LiDAR: imagens multiespectrais WorldView-2 foram corrigidas, pan-sharpened e classificadas por pixel com Random Forest para mapear povoamentos. Para árvores individuais, dados LiDAR do drone geraram um modelo de altura da copa; as copas foram delimitadas com watershed e classificadas por atributos estruturais. A acurácia de produtor/usuário no mapeamento individual foi 94%/64%. Árvores abaixo do dossel foram omitidas com frequência.
+
+5. Demétrio et al. (2022), observação manual de estróbilos: imagens RGB de drone foram feitas em pelo menos cinco ângulos para cada uma de 36 árvores macho. Dois avaliadores identificaram e contaram manualmente os estróbilos, em vez de usar um modelo automático. As árvores foram marcadas e georreferenciadas com GPS portátil.
+
+6. Venancio, Disperati e Neves (2010), posicionamento GPS: compararam GPS absoluto e diferencial em floresta com araucárias. O absoluto teve erro de 5 a 14 m; o diferencial variou de 6 a 84 cm nos casos em que foi possível. O resultado mostra que a precisão do ponto precisa ser medida no ambiente da pesquisa.
+
+Como comparar: executar o YOLOv7x ou YOLOv11 como linha de base e confrontá-lo, na mesma área e com os mesmos indivíduos de referência, com uma abordagem que primeiro delimite copas individuais e depois as classifique usando RGB, forma e altura estimada, além de vistas oblíquas quando disponíveis. Para o modelo reprodutivo, medir separadamente a classificação a partir das imagens próximas. Separar treino e teste por árvore ou área, nunca por foto aleatória da mesma árvore. Comparar precisão, revocação, F1 e omissões para detecção da espécie; métricas por classe e taxa de indeterminados para classificação reprodutiva; erro de posição em metros e completude do inventário para o mapa. Os resultados publicados não devem ser comparados diretamente como se fossem obtidos no mesmo teste, pois usam áreas, imagens, rótulos e protocolos de validação distintos.
+
+Referências iniciais (trabalhos publicados):
+
+1. Correa, A. D. O. (2024). Identificação e contagem de árvores de Araucaria angustifolia em um fragmento florestal urbano utilizando imagens de UAV e a estrutura YOLOv7. Dissertação, UFPR. https://hdl.handle.net/1884/94937
+2. Automated Detection of Araucaria angustifolia in Urban Areas Using Google Earth Images and YOLOv7x (2025). Mapeamento de indivíduos em Curitiba. https://doi.org/10.3390/rs17050809
+3. Mendes, C. F. et al. (2026). First Insights into Brazilian Pine Detection in Open Fields Using YOLOv11 and UAV Data. Detecção de araucárias em áreas abertas. https://doi.org/10.5194/isprs-annals-X-3-W4-2025-249-2026
+4. Saad, F. et al. (2021). Detectability of the Critically Endangered Araucaria angustifolia Tree Using Worldview-2 Images, Google Earth Engine and UAV-LiDAR. Mapeamento com imagens de satélite e LiDAR de drone. https://doi.org/10.3390/land10121316
+5. Demétrio, L. et al. (2022). Can We Predict Male Strobili Production in Araucaria angustifolia Trees with Dendrometric and Morphometric Attributes? Identificação e contagem manual de estróbilos masculinos em imagens de drone. https://doi.org/10.3390/f13122074
+6. Venancio, D. L.; Disperati, A. A.; Neves, R. V. (2010). Mapeamento da Araucaria angustifolia utilizando receptores GPS. Comparação da precisão de posicionamento sob floresta. https://doi.org/10.1590/S0104-77602010000300015
+7. Fenologia reprodutiva da Araucaria angustifolia na região de Curitiba (2005). Períodos de desenvolvimento e visibilidade das estruturas reprodutivas. https://www.floram.org/journal/floram/article/588e2212e710ab87018b4635
+
+
+Rascunho do esqueleto da proposta para o PPGCA
+
+- Título, identificação do autor, data e declaração de uso de IA generativa.
+- 1. Introdução: problema, pergunta de pesquisa, objetivo geral, objetivos específicos e delimitação da área piloto.
+- 2. Fundamentação teórica / trabalhos relacionados: inventário individual por sensoriamento remoto; segmentação de copas; georreferenciamento e erro posicional; evidências reprodutivas em imagens; trabalhos com araucárias, UAVs e aprendizado profundo.
+- 3. Metodologia: coleta, criação da base anotada, treinamento/ajuste fino, associação das evidências à copa, geração do inventário e avaliação experimental.
+- 4. Resultados esperados: método reproduzível, inventário georreferenciado auditável, medidas de desempenho e protocolo de coleta aplicável em estudos futuros.
+- Referências em ABNT.
+
+
+Discussão técnica inicial e hipóteses de método
+
+1. Coleta em duas escalas
+
+O DJI Mini 4 Pro será a plataforma prevista para o levantamento amplo da área. Suas imagens serão usadas para construir a base geográfica do levantamento, identificar copas candidatas e gerar um identificador para cada indivíduo. Como o GPS/GNSS embarcado não substitui uma referência de alta precisão, o erro de posição do inventário deverá ser medido em relação a uma amostra de referências de campo; pontos de controle ou outro método de referência ainda precisam ser definidos conforme a área disponível.
+
+O Pavo20 Pro FPV será a plataforma prevista para aproximação controlada das copas apontadas no mapa. Ele produzirá vídeos ou imagens próximas para buscar estróbilos masculinos ou estruturas femininas. A associação entre esse material e a árvore do mapa deverá usar o identificador da copa, o plano de voo, telemetria disponível e revisão humana dos casos ambíguos. A disponibilidade e a configuração de GPS/telemetria nesse drone precisam ser confirmadas antes de defini-lo como fonte de coordenadas.
+
+2. Forma de representar as copas
+
+Caixas delimitadoras retangulares servem como linha de base para detectar e contar árvores, mas não descrevem bem o contorno de uma copa. A proposta deve priorizar segmentação por instância: cada araucária terá uma máscara de pixels da própria copa, da qual podem ser derivados centróide, área e geometria para o inventário. YOLO com segmentação de instâncias é um candidato principal por conciliar velocidade e máscaras; Mask R-CNN pode ser usado como referência comparativa.
+
+3. Papel do modelo de IA
+
+O ajuste fino de um modelo pré-treinado com as imagens da área piloto será parte central da investigação. Para copas, o modelo deve receber ortomosaicos e imagens aéreas RGB anotadas. Para as estruturas reprodutivas, deve receber imagens próximas e rótulos masculino, feminino, indeterminado ou evidência ausente, conforme protocolo a definir. A ausência de estrutura visível não poderá ser usada como evidência de sexo.
+
+Redes recorrentes (RNN) não são a escolha principal para detectar copas em imagens isoladas: elas foram concebidas para sequências. Poderão ser investigadas somente se o vídeo do voo de aproximação trouxer benefício mensurável, por exemplo, ao agregar evidências de vários quadros consecutivos da mesma copa. O núcleo comparativo mais viável é formado por modelos de detecção/segmentação visual, com ajuste fino nas imagens próprias.
+
+4. Detecção durante a coleta
+
+A expressão operacional a investigar é inferência em quase tempo real: o vídeo ou as imagens do voo poderão ser processados em uma estação em solo para indicar evidências ao operador. A execução embarcada no Pavo20 Pro não deve ser pressuposta, pois depende de capacidade computacional, transmissão e autonomia. A proposta acadêmica continuará avaliando principalmente a qualidade do inventário final; latência e utilidade operacional poderão ser medidas como avaliação complementar.
+
+5. Base de imagens e divisão experimental
+
+O princípio 80/20 não deve ser tratado como regra de Pareto para a coleta. Uma primeira divisão viável é 80% dos indivíduos para treino e 20% para teste, com uma parcela do treino reservada para validação. A divisão deve ocorrer por árvore, trecho ou voo, nunca por fotografia aleatória: imagens da mesma araucária não podem aparecer simultaneamente no treino e no teste. A coleta deve cobrir variações de altitude, ângulo, iluminação, densidade de dossel e estágio reprodutivo. Se houver poucos exemplos de uma classe, será necessário ampliar a coleta ou declarar essa limitação.
+
+6. Avaliação prevista
+
+- Detecção e segmentação de copas: precisão, revocação, F1 e IoU/métricas de máscara.
+- Associação copa-imagem próxima: proporção de associações corretas e casos revisados.
+- Classificação reprodutiva: métricas por classe, matriz de confusão e taxa de indeterminados.
+- Inventário: completude, omissões, duplicidades e erro de posição em metros.
+- Operação: tempo de coleta e, se a inferência em quase tempo real for implementada, tempo de resposta ao operador.
+
+7. Escopo de aplicação
+
+O objeto de pesquisa é o método de coleta e produção de registros georreferenciados auditáveis. Pesquisadores, fiscalização ambiental e manejo de áreas comerciais são usuários potenciais de versões futuras do método, mas não constituem resultados prometidos nesta proposta. Qualquer uso operacional deverá respeitar licenças de voo, autorização de acesso à área e regras aplicáveis.

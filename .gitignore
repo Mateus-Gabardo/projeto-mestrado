@@ -1,0 +1,13 @@
+# Arquivos auxiliares gerados por compilação LaTeX
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+
+# PDFs compilados são derivados dos fontes; os artigos em materiais/ permanecem versionáveis.
+**/main.pdf
+
+# Arquivo baixado do template; a cópia extraída dos fontes é suficiente.
+template-oficial/*.zip

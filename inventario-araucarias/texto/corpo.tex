@@ -1,0 +1,41 @@
+\section*{Uso de IA Generativa}
+
+% TODO: manter apenas a declaração verdadeira para a versão submetida.
+% O edital exige que qualquer uso de inteligência artificial generativa seja declarado.
+% Opção 1: declarar que nenhuma ferramenta foi utilizada.
+% Opção 2: informar ferramenta, partes da proposta e finalidade de uso.
+\textbf{[TODO: inserir a declaração de uso de IA generativa aplicável.]}
+
+\section{Introdução}
+
+A \textit{Araucaria angustifolia}, conhecida como araucária ou pinheiro-do-paraná, é uma espécie característica da Floresta Ombrófila Mista. Produzir um inventário individual em áreas florestais exige identificar árvores pelas copas, associar observações de estruturas reprodutivas ao indivíduo correto e registrar posições geográficas cuja precisão possa ser avaliada. Informações desse tipo poderão futuramente apoiar o acompanhamento e a conservação da espécie.
+
+Esta pesquisa propõe desenvolver e avaliar um fluxo para produzir um inventário georreferenciado de araucárias individuais a partir da identificação de copas e estruturas reprodutivas em imagens. Em uma área piloto, imagens aéreas obtidas por UAV ou drone serão usadas para identificar copas e estimar suas posições. Imagens próximas, associadas a cada copa, permitirão investigar a classificação da árvore como masculina ou feminina quando suas estruturas reprodutivas estiverem visíveis. Sem evidência suficiente, a classificação será indeterminada. A presença de uma árvore feminina não será tratada como evidência de produção de pinhas em uma safra específica.
+
+\textbf{Pergunta de pesquisa:} como integrar a identificação de copas e de estruturas reprodutivas em imagens de UAV para produzir um inventário georreferenciado de araucárias individuais, avaliando os erros de detecção, classificação e localização?
+
+O objetivo geral é desenvolver e avaliar, em uma área piloto de Floresta Ombrófila Mista, um fluxo para gerar esse inventário individual. Como objetivos específicos, pretende-se: (i) detectar araucárias e delimitar suas copas; (ii) investigar a classificação reprodutiva baseada em estruturas visíveis; (iii) associar imagens próximas às copas correspondentes; (iv) gerar registros geográficos individuais; e (v) avaliar detecção, classificação, completude e erro de localização, utilizando referências de campo conforme a disponibilidade.
+
+\section{Fundamentação teórica / trabalhos relacionados}
+
+Estudos anteriores investigaram a detecção de araucárias por imagens do Google Earth e de UAV, empregando detectores da família YOLO, além de abordagens com imagens de satélite e dados LiDAR \cite{karasinski2025,correa2024,saad2021}. Esses trabalhos mostram possibilidades de mapeamento em diferentes ambientes, mas seus resultados não são diretamente comparáveis quando variam a área, a resolução das imagens, os rótulos e os protocolos de validação.
+
+Também há pesquisas que utilizam imagens obtidas por drone para observar estruturas reprodutivas da espécie \cite{demetrio2022}. A classificação automática dessas estruturas e sua associação à árvore correta são problemas distintos da detecção da copa. Além disso, a ausência de estruturas visíveis em uma imagem não permite concluir a condição reprodutiva do indivíduo. Por isso, o inventário deverá admitir a classe indeterminada e registrar a imagem e a data que sustentam cada classificação.
+
+A contribuição investigada é a integração entre identificação de copas, classificação reprodutiva baseada em evidência visual e geração de registros georreferenciados com erro de localização avaliado. A avaliação será realizada no mesmo contexto e com referências comuns, sem comparar diretamente métricas publicadas sob protocolos distintos.
+
+\section{Metodologia}
+
+O estudo será conduzido em uma área piloto de Floresta Ombrófila Mista, cuja disponibilidade ainda deverá ser confirmada. Serão utilizadas imagens aéreas ou de drone para delimitar copas e identificar indivíduos de \textit{Araucaria angustifolia}. Quando disponíveis, dados de altura da copa e imagens de outros ângulos poderão complementar a informação RGB. O desempenho será comparado com uma linha de base baseada em detector de objetos, como YOLO, usando as mesmas áreas e referências.
+
+Em uma segunda etapa, imagens próximas das copas identificadas serão analisadas para reconhecer estróbilos masculinos ou pinhas femininas. A associação entre cada imagem próxima e a copa correspondente será verificada. Evidência visível reconhecida e atribuída com segurança poderá sustentar uma classificação masculina ou feminina; casos sem evidência suficiente ou com sinais contraditórios permanecerão indeterminados ou serão encaminhados para revisão humana.
+
+As posições serão obtidas do levantamento georreferenciado e comparadas, em uma amostra, com medições de campo para avaliar o erro de localização. Os dados serão organizados em registros individuais contendo identificador, coordenadas, espécie identificada, classe reprodutiva atribuída, imagem de evidência e data da observação. Informações sobre a precisão posicional serão registradas conforme os dados disponíveis. O produto será exportável em formatos geográficos abertos, como GeoJSON e KML.
+
+A avaliação considerará precisão, revocação, F1 e omissões na detecção; métricas por classe e taxa de indeterminados na classificação reprodutiva; erro de localização em metros; completude do inventário; e tempo necessário por área. A separação entre treino e teste será feita por árvore ou por área, evitando que imagens do mesmo indivíduo apareçam nos dois conjuntos. Árvores encobertas pelo dossel serão registradas como limite do método com imagens ópticas aéreas.
+
+\section{Resultados esperados}
+
+Espera-se obter um inventário georreferenciado de araucárias individuais e um fluxo reproduzível para produzi-lo, acompanhados de uma avaliação dos erros de detecção, classificação reprodutiva e localização. O inventário deverá preservar a evidência visual e a data de cada observação, permitir casos indeterminados e ser exportável em formatos geográficos abertos.
+
+O estudo deverá indicar em que condições a integração de imagens de copa e de estruturas reprodutivas é viável, quais erros permanecem e como a cobertura do dossel afeta a completude. A disponibilidade de área, imagens adequadas e referências de campo será determinante para o escopo final. O artefato será apresentado como ferramenta experimental de inventário e apoio à pesquisa, não como levantamento validado para qualquer área sem avaliação local.
