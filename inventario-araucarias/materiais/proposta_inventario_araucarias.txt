@@ -4,9 +4,9 @@ A proposta é produzir um mapa de araucárias individuais em uma área piloto de
 
 Pergunta de pesquisa:
 
-Como integrar a identificação de copas e de estruturas reprodutivas em imagens de UAV para reduzir erros de detecção, classificação e localização no mapeamento individual de Araucaria angustifolia?
+Como adaptar e avaliar modelos de aprendizado profundo para segmentar copas, identificar indivíduos de Araucaria angustifolia e classificar sua condição reprodutiva — masculina, feminina ou indeterminada — em imagens de UAV, associando cada indivíduo à sua localização geográfica e quantificando os erros do inventário?
 
-A pergunta reúne três problemas técnicos: detectar a araucária pela copa; classificar sua condição reprodutiva; e associar corretamente cada árvore a uma coordenada geográfica.
+A pergunta reúne um problema computacional integrado: segmentar e identificar cada araucária pela copa, classificar sua condição reprodutiva com base em evidências visíveis e associar o registro individual a uma coordenada geográfica, medindo o desempenho e as limitações do método.
 
 O método terá duas etapas. Na primeira, imagens aéreas ou de drone serão usadas para separar copas individuais e identificar quais pertencem a Araucaria angustifolia. Será testada uma estratégia que combina aparência da copa, sua forma e, quando disponível, altura estimada e imagens de outros ângulos. Seu desempenho será comparado com detectores usados nos estudos anteriores, como YOLO, sobretudo em trechos de mata densa. Na segunda etapa, imagens mais próximas das copas identificadas, preferencialmente obtidas por um drone pequeno, alimentarão um modelo ajustado para reconhecer estróbilos masculinos (popularmente chamados de pitos) ou pinhas femininas. Uma estrutura reconhecida e atribuída com segurança à árvore fornece evidência positiva para classificá-la; sem estrutura visível, o registro continuará indeterminado. Casos contraditórios exigirão revisão humana.
 

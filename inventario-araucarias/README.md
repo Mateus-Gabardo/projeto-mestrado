@@ -12,6 +12,7 @@ A proposta atual está em `materiais/proposta_inventario_araucarias.txt`. Ela de
 - Os arquivos locais do tema anterior foram excluídos; o índice mantém títulos e descrições para eventual consulta bibliográfica futura.
 - `main.tex`: arquivo principal LaTeX; define o título e carrega `texto/corpo.tex`.
 - `texto/corpo.tex`: texto principal da proposta, organizado nas seções acadêmicas previstas.
+- `esqueleto_pesquisa.md`: índice estrutural da pesquisa, usado como referência para desenvolver o texto da proposta.
 - `referencias/`: bibliografia do documento; revisar e atualizar as referências específicas de araucárias antes da versão final.
 - `main.pdf`: versão compilada mais recente, se gerada.
 - `../template-oficial/`: cópia do template disponibilizado para o processo seletivo, mantida na raiz do repositório.
