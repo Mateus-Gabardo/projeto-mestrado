@@ -60,6 +60,30 @@ Os dados serão divididos por indivíduo, trecho ou voo, reservando aproximadame
 
 \section{Resultados esperados}
 
-Espera-se obter um inventário georreferenciado de araucárias individuais e um fluxo reproduzível para produzi-lo, acompanhados de uma avaliação dos erros de detecção, classificação reprodutiva e localização. O inventário deverá preservar a evidência visual e a data de cada observação, permitir casos indeterminados e ser exportável em formatos geográficos abertos.
+Espera-se obter e avaliar um método computacional para gerar registros individuais de araucárias a partir de imagens de UAV. O resultado central será um inventário georreferenciado experimental, no qual cada registro reunirá um identificador, a localização estimada, a representação da copa, a classe reprodutiva quando sustentada por evidência visual, a imagem correspondente, a data da observação e a informação de incerteza disponível. O inventário deverá admitir casos indeterminados e ser exportável em formatos geográficos abertos, como GeoJSON e KML.
 
-O estudo deverá indicar em que condições a integração de imagens de copa e de estruturas reprodutivas é viável, quais erros permanecem e como a cobertura do dossel afeta a completude. A disponibilidade de área, imagens adequadas e referências de campo será determinante para o escopo final. O artefato será apresentado como ferramenta experimental de inventário e apoio à pesquisa, não como levantamento validado para qualquer área sem avaliação local.
+Como referência para a publicação dos dados, a Tabela \ref{tab:registro-publico} apresenta a estrutura mínima de um registro público. A estrutura final dependerá dos dados efetivamente disponíveis e das restrições de divulgação da área piloto.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Estrutura mínima de um registro público do inventário.}
+\label{tab:registro-publico}
+\begin{tabular}{p{3.5cm} p{5.5cm} p{3.3cm}}
+\hline
+\textbf{Campo} & \textbf{Descrição} & \textbf{Exemplo} \\
+\hline
+\texttt{id} & Identificador único do indivíduo. & \texttt{ARA-000123} \\
+\texttt{latitude} & Latitude estimada da árvore. & \texttt{-25.4284} \\
+\texttt{longitude} & Longitude estimada da árvore. & \texttt{-49.2731} \\
+\texttt{sexo} & Classificação reprodutiva baseada em evidência visual. & \texttt{feminino}, \texttt{masculino} ou \texttt{indeterminado} \\
+\texttt{data} & Data da observação. & \texttt{2027-05-18} \\
+\hline
+\end{tabular}
+\end{table}
+
+O estudo deverá produzir evidências sobre o efeito do ajuste fino nas imagens da área piloto, comparando a linha de base baseada em YOLO com a abordagem de representação do contorno das copas. Espera-se quantificar precisão, revocação, omissões, qualidade da delimitação, desempenho da classificação reprodutiva, correção da associação entre imagem próxima e indivíduo, duplicidades, completude e erro de localização. A pesquisa também deverá indicar em quais condições a estratégia de registrar a copa a partir da posição do UAV ou estimá-la por geometria de visada produz resultados utilizáveis, assim como os limites impostos pelo dossel, pela qualidade das imagens e pela disponibilidade de referências de campo.
+
+Como resultado aplicado futuro, o método poderá fornecer uma base auditável para novos levantamentos da espécie. Para agricultores familiares e comunidades rurais que realizam a coleta sazonal do pinhão, essa base poderá facilitar a localização e o acompanhamento de árvores já observadas, desde que a atualização por safra e a validação local sejam realizadas; a classificação feminina não assegura, por si só, produção de pinhas em determinado ano \citep{ipa2024}. Para pesquisadores e órgãos responsáveis pelo monitoramento ambiental, registros individuais com data, evidência visual e incerteza poderão apoiar a repetição de levantamentos e a análise da distribuição observada da espécie ameaçada \citep{mma2022}. Tais usos dependem de avaliação em cada área e não constituem uma validação automática para fins de manejo, fiscalização ou conservação.
+
+O artefato será apresentado como ferramenta experimental de inventário e apoio à pesquisa, e não como levantamento validado para qualquer área sem avaliação local. A disponibilidade da área piloto, de imagens adequadas e de referências de campo determinará o escopo final e a generalização dos resultados.
