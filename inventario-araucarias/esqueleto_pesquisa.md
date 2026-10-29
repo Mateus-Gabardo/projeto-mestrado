@@ -19,34 +19,35 @@
 
 ## 2. Fundamentação teórica e trabalhos relacionados
 
-1. Inventário florestal individual por sensoriamento remoto
-2. Detecção e segmentação de copas
-3. Adaptação e avaliação de modelos de aprendizado profundo
-4. Classificação reprodutiva por evidência visual
-5. Imagens de UAV e aquisição em diferentes escalas
-6. Georreferenciamento individual e erro posicional
-7. Trabalhos relacionados com araucárias
+1. Inventário individual e aquisição de imagens por UAV
+2. Detecção e segmentação de copas em imagens aéreas
+3. Trabalhos de identificação de araucárias e de outras espécies por UAV
+4. Adaptação, ajuste fino e comparação de modelos de aprendizado profundo
+5. Classificação reprodutiva a partir de evidência visual
+6. Associação entre copa, imagem próxima e indivíduo
+7. Georreferenciamento individual e avaliação do erro posicional
 8. Lacuna científica e contribuição computacional proposta
 
 ## 3. Metodologia
 
 1. Desenho do estudo e área piloto
-2. Planejamento da coleta com UAV/drone
+2. Planejamento da coleta com UAV
 3. Levantamento amplo e identificação de copas
 4. Coleta de imagens próximas para evidências reprodutivas
 5. Organização e anotação da base de dados
 6. Divisão entre treino, validação e teste por árvore, trecho ou voo
-7. Ajuste fino dos modelos
+7. Ajuste fino e comparação dos modelos de detecção e segmentação
 8. Segmentação de instâncias e identificação dos indivíduos
-9. Classificação reprodutiva: masculina, feminina ou indeterminada
-10. Associação entre imagem próxima, copa e indivíduo
-11. Geração do registro georreferenciado
-12. Referências de campo e validação posicional
-13. Linha de base e comparação experimental
-14. Métricas de detecção e segmentação
-15. Métricas de classificação reprodutiva
-16. Métricas do inventário e erro de localização
-17. Limitações, casos ambíguos e revisão humana
+9. Ajuste do modelo de classificação reprodutiva
+10. Classificação reprodutiva: masculina, feminina ou indeterminada
+11. Associação entre imagem próxima, copa e indivíduo
+12. Geração do registro georreferenciado
+13. Referências de campo e validação posicional
+14. Linha de base e comparação experimental
+15. Métricas de detecção e segmentação
+16. Métricas de classificação reprodutiva
+17. Métricas do inventário e erro de localização
+18. Limitações, casos ambíguos e revisão humana
 
 ## 4. Resultados esperados
 
